@@ -1,0 +1,46 @@
+---
+const moodNaarGenre = {
+  happy: 35,       // Comedy
+  sad: 18,         // Drama
+  romantic: 10749, // Romance
+  energetic: 28,   // Action
+  stressed: 16     // Animation
+};
+
+const geselecteerdeMood = "happy"
+const genreId = moodNaarGenre[geselecteerdeMood]
+console.log(genreId)
+---
+
+<html lang="nl">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<main>
+			<button data-mood="happy">Happy</button>
+			<button data-mood="sad">Sad</button>
+			<button data-mood="romantic">Romantic</button>
+			<button data-mood="energetic">Energetic</button>
+			<button data-mood="stressed">Stressed</button>
+		</main>
+
+		<!-- define:vars={{ moodNaarGenre }} geeft de variable door van de serverSide -->
+		<script define:vars={{ moodNaarGenre }}>
+			const moodButtons = document.querySelectorAll("button")
+			
+			moodButtons.forEach(function(button){
+			button.addEventListener("click", function(){
+			const mood = button.getAttribute("data-mood")
+			const genreId = moodNaarGenre[mood]
+			console.log(genreId)
+			})
+		})
+		</script>
+	</body>
+</html>

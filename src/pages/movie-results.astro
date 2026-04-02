@@ -1,4 +1,12 @@
 ---
+const base = "https://api.themoviedb.org/3"
+const endpoint = "/genre/movie/list"
+const API_KEY = import.meta.env.TMDB_API_KEY
+
+const url = base + endpoint + "?api_key=" + API_KEY
+const response = await fetch(url)
+const data = await response.json()
+console.log(data)
 
 ---
 
@@ -12,8 +20,6 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<main>
-			<h1>s</h1>
-		</main>
+		<p>test {data.genres[1].id}</p>
 	</body>
 </html>
