@@ -1,0 +1,31 @@
+@import './typegraphy.css';
+
+:root {
+  /* Kleuren */
+  --kleur-primair: #ba9eff;
+  --kleur-primair-zacht: rgba(186, 158, 255, 0.08);
+  --kleur-primair-container: rgba(186, 158, 255, 0.14);
+  --kleur-secundair: #8fa7fe;
+  --kleur-oppervlak-gloed: rgba(186, 158, 255, 0.35);
+
+  --kleur-op-oppervlak: #f2f0f8;
+  --kleur-op-oppervlak-variant: #b6b2c5;
+  --kleur-op-primair-vast: #ffffff;
+
+  --kleur-omlijning-variant: rgba(182, 178, 197, 0.15);
+
+  /* Verlopen */
+  --verloop-primair: linear-gradient(135deg, #ba9eff 0%, #8fa7fe 100%);
+  --verloop-zijbalk: linear-gradient(
+    90deg,
+    rgba(21, 24, 34, 1) 0%,
+    rgba(21, 24, 34, 0) 100%
+  );
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+

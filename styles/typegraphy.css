@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.grote-heading {
+  font-size: clamp(2rem, 5vw, 4rem);
+  letter-spacing: -0.02em;
+  font-variation-settings: 'wght' 600;
+  line-height: 1.2;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.medium-heading {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: -0.01em;
+  font-variation-settings: 'wght' 500;
+  line-height: 1.2;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.paragraaf {
+  font-size: clamp(0.75rem, 1vw, 1rem);
+  font-variation-settings: 'wght' 350;
+  line-height: 1.2;
+  font-family: 'Inter', sans-serif;
+}
