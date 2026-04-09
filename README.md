@@ -87,11 +87,94 @@ Daarom heb ik ervoor gekozen om de mood via de URL door te geven. Op die manier 
 volgende week wil ik beginnen met het invullen van de resultaten pagina zodat je een film krijg als je op een mood heb geklikt. als dat is gelukt wil ik een bookmark functie maken met local storage.
 
 
-weekly nerd:
+## weekly nerd:
 
 
-feedback sessie
+**feedback sessie**
 tijdens de feedback sessie heb ik mijn opdracht besproken in de groep en wat ik uiteindelijk wil gaan maken. Ik verteld welke api's ik van plan ben te gebruiken om de eindresultaat te realiseren. Ik kreeg van Jad te horen dat als ik de web speech api wil gaan gebruiken dat ik ook gebruik moet gaan maken van de Web AI api zodat die de speech kan translate naar een mood. Ik heb besloten om dat te gaan doen als extra voor als ik extra tijd over heb.
+
+## week 2/1
+**Wat heb ik gedaan**
+
+**Wat heb ik geleerd:**
+
+
+**Wat ga ik volgende week doen:**
+
+## weekly nerd:
+**Johan van stichting Accessibility**
+Hij liet zien hoe iemand de screenreader gebruikt. Het was heel snel waardoor ik niet wist wat er gezegt werd of wat voor website het was. je hoorde veel click en links door de links die op de pagina zijn. het was de bol.com website.
+
+Hij besefte dat hij niks toegankelijk kon maken zonder de mensen die daarmee gaan werken.
+
+**4 basis principes van de wcag**
+perceivable
+operable
+understandeble
+robust 
+
+je kan heel makkelijk de wcag verkeert te intepeteren. De wcag is een goede basis maar het is niet optimaal.
+
+als de afbeelding decoratief is dan hoef je geen alt in te vullen omdat iemand met een screenreader er niks aan heeft.
+
+een schermlezer heeft al heelveel functies. je hoeft niet onnodige functies toe te voegen anders gaat de screenreader dit ook op lezen.
+
+je komt erachter door zelf een screenreader te gebruiken en ermee te oefenenen. met h kan je door alle headings gaan. hiervan hebben ze nog een aantal functies.
+
+**vragen als je voor zo iemand ontwerpt**
+wat maakt het voor haar of hem moeilijk 
+wat heeft hij/zij nodig 
+heb je een project van je zelf waar hij/zij zou afhaken
+
+**voorbeeld 1: martijn**
+martijn gebruikt websites helemaal ingezoomed. wat hij vervelend vind is:
+- navigatie of andere elementen die schuiven wanneer je scrolled door de website.
+- sticky headers
+- captha die letters met een streep erdoor heen zijn lastig te lezen voor hem
+
+een oplossing zou kunnen zijn om de annimatie weg te halen door een knop te klikken.
+
+**wat martijn nodig heeft**
+- schaalbaarheid
+- contrast
+- gerelateerde info bij elkaar 
+- visuele indicatoren zoals een focusrant 
+
+**voorbeeld 2: naduah**
+ze heeft heel veel pijn en is vaak moe.
+
+**wat voor problemen heeft ze tijdens het web gebruiken**
+- velle kleuren
+- website met veel informatie
+- als ze lang moet zoeken naar wat ze nodig heeft.
+
+
+
+**Voorbeeld 3: guido**
+heeft asperger. 
+
+loopt tegen:
+- visuele prikkels
+- audio prikkels
+
+alles komt extra hard bij hem binnen. advertenties die te luid zijn of visueel te veel willen doen. De website wordt dan onbruikbaar voor hem. wil met drie kliks iets kunnen vinden. anders wordt het te veel voor hem.
+
+**wat werkt voor hem**
+- voorspelbaarheid
+- rustige layout en vormgeving
+- duidelijke instucties en meldingen 
+
+## week 2/2
+**Wat heb ik gedaan**
+
+**Wat heb ik geleerd:**
+
+
+**Wat ga ik volgende week doen:**
+
+
+**feedback sessie**
+
 
 bronnen: 
 **devine:vars:** Variabel van ss (server side) naar cs (client side) doorgeven.
@@ -99,3 +182,4 @@ https://docs.astro.build/en/reference/directives-reference/#definevars
 
 **prerender weghalen:**
 https://docs.astro.build/en/guides/upgrade-to/v5/#removed-support-for-dynamic-prerender-values-in-routes
+
