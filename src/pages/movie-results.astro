@@ -20,17 +20,41 @@ const genreId = moodNaarGenre[mood]
 const base = "https://api.themoviedb.org/3"
 const endpoint = "/discover/movie?with_genres=" + genreId + "&sort_by=popularity.desc&vote_average.gte=6"
 const API_KEY = import.meta.env.TMDB_API_KEY
-
 const url = base + endpoint + "&api_key=" + API_KEY
 
 console.log("URL:", url);
-
+// fetch naar de movies
 const response = await fetch(url)
 const data = await response.json()
-console.log(data)
+console.log(data.results[0])
 
-console.log("API data:", data);
-console.log("Films:", data.results);
+// om de posters van tmdm op te halen aan de hand van een random getaal
+// bron image oproepen: https://developer.themoviedb.org/docs/image-basics
+// bron math.random: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+// bron math.floor: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
+const randomIndex = Math.floor(Math.random() * data.results.length - 1)
+const posterPath = data.results[randomIndex].poster_path
+const posterUrl = "https://image.tmdb.org/t/p/w500" + posterPath
+
+const backDrop = data.results[randomIndex].backdrop_path
+const backDropUrl = "https://image.tmdb.org/t/p/w500" + backDrop
+
+// film informatie ophalen van de random film
+const filmBeschrijving = data.results[randomIndex].overview
+const filmTitel = data.results[randomIndex].title
+
+
+// fetch naar de cast 
+const movieId = data.results[randomIndex].id
+const endPointCast = "/movie/" + movieId + "/credits?" 
+const urlCast = base + endPointCast + "&api_key=" + API_KEY
+const responseCast = await fetch(urlCast)
+const dataCast = await responseCast.json()
+console.log(dataCast)
+
+
+// console.log("API data:", data);
+// console.log("Films:", data.results);
 
 
 // testeb of ik de data van de genres kan ophalen van de API zodat ik die kan koppelen aan de moodNaarGenre object in de mood.astro
@@ -48,9 +72,12 @@ console.log("Films:", data.results);
 <MainLayout>
 	<main>
 		<article>
-			<h1></h1>
-			<img src="" alt="">
-			<p></p>
+			<img src={backDropUrl} alt="">
+
+			<h1>Films voor mood: {mood}</h1>
+			<img src={posterUrl} alt="">
+			<h2>{filmTitel}</h2>
+			<p>{filmBeschrijving}</p>
 		</article>
 	</main>
 </MainLayout>
