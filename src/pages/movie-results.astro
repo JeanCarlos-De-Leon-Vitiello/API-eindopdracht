@@ -1,6 +1,7 @@
 ---
 // @ts-nocheck
 import MainLayout from "../layouts/MainLayout.astro"
+import Cast from "../components/Cast.astro"
 
 // mood ophalen die ik met de url heb mee gegeven
 export const prerender = false;
@@ -32,25 +33,29 @@ console.log(data.results[0])
 // bron image oproepen: https://developer.themoviedb.org/docs/image-basics
 // bron math.random: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 // bron math.floor: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
-const randomIndex = Math.floor(Math.random() * data.results.length - 1)
-const posterPath = data.results[randomIndex].poster_path
+const randomIndex = Math.floor(Math.random() * data.results.length)
+const randomMovie = data.results[randomIndex]
+const posterPath = randomMovie.poster_path
 const posterUrl = "https://image.tmdb.org/t/p/w500" + posterPath
 
-const backDrop = data.results[randomIndex].backdrop_path
+const backDrop = randomMovie.backdrop_path
 const backDropUrl = "https://image.tmdb.org/t/p/w500" + backDrop
 
 // film informatie ophalen van de random film
-const filmBeschrijving = data.results[randomIndex].overview
-const filmTitel = data.results[randomIndex].title
+const filmBeschrijving = randomMovie.overview
+const filmTitel = randomMovie.title
 
 
 // fetch naar de cast 
-const movieId = data.results[randomIndex].id
-const endPointCast = "/movie/" + movieId + "/credits?" 
+const endPointCast = "/movie/" + randomMovie.id + "/credits?" 
 const urlCast = base + endPointCast + "&api_key=" + API_KEY
+console.log(urlCast)
 const responseCast = await fetch(urlCast)
 const dataCast = await responseCast.json()
-console.log(dataCast)
+console.log(dataCast.cast)
+
+
+
 
 
 // console.log("API data:", data);
@@ -79,5 +84,16 @@ console.log(dataCast)
 			<h2>{filmTitel}</h2>
 			<p>{filmBeschrijving}</p>
 		</article>
+		<section>
+			<h2>Cast</h2>
+			<ul>
+				{dataCast.cast.map(function(castMember){
+					return (
+						<Cast imageUrl={"https://image.tmdb.org/t/p/w500"+castMember.profile_path} title={castMember.name} text={castMember.character} />
+					)
+				})}
+				
+			</ul>
+		</section>
 	</main>
 </MainLayout>
