@@ -54,7 +54,7 @@ TMDB api
 local storage api 
 canvas api 
 
-voorang:
+**voorang:**
 scroll driven annimation
 view transition
 
@@ -236,6 +236,28 @@ Volgende week wil ik een begin maken aan de functie om een film op te kunnen sla
 
 **feedback sessie**
 Tijdens de feedback sessie ben ik erachter gekomen dat localstorage api te klein is om te tellen voor mijn cijfer. Ook is het belangrijk dat ik een creatief deel creeer. Ik ben van plan iets met carousel te doen en of viewtransitions. Voor de rest was mijn idee goed en de code ook wel.
+
+## week 3/1
+**Wat heb ik gedaan**
+- 
+
+**Wat heb ik geleerd:**
+
+
+**Wat ga ik volgende week doen:**
+
+## week 3/2
+**Wat heb ik gedaan**
+- 
+
+**Wat heb ik geleerd:**
+
+
+**Wat ga ik volgende week doen:**
+
+
+**feedback sessie**
+
 
 ## bronnen: 
 **devine:vars:** Variabel van ss (server side) naar cs (client side) doorgeven.
