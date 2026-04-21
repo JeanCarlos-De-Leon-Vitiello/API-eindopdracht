@@ -87,12 +87,13 @@ console.log(dataCast.cast)
 				</div>
 			</div>
 		</article>
+
 		<section>
 			<h2>Cast</h2>
 			<ul>
 				{dataCast.cast.map(function(castMember){
 					return (
-						<Cast imageUrl={"https://image.tmdb.org/t/p/w500"+castMember.profile_path} title={castMember.name} text={"Playing " +castMember.character} />
+						<Cast id={castMember.id} imageUrl={"https://image.tmdb.org/t/p/w500"+castMember.profile_path} title={castMember.name} text={"Playing " +castMember.character} />
 					)
 				})}
 			</ul>

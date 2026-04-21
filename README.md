@@ -52,11 +52,10 @@ TMDB api
 
 **web api's:**
 local storage api 
-canvas api 
+view transition
 
 **voorang:**
 scroll driven annimation
-view transition
 
 **extra:**
 web ai api
