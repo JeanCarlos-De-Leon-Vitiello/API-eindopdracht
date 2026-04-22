@@ -2,18 +2,73 @@
 // @ts-nocheck
 import MainLayout from "../layouts/MainLayout.astro"
 
+export const prerender = false;
 const actorId = Astro.url.searchParams.get("id")
+const actorName = Astro.url.searchParams.get("castname")
+console.log("actorId:", actorId)
+console.log("actorname:", actorName)
+
+// fetch naar de cast member
+const API_KEY = import.meta.env.TMDB_API_KEY
+console.log("API_KEY:", API_KEY)
+const base = 'https://api.themoviedb.org/3'
+const endPoint = '/person/' + actorId
+const url = base + endPoint + "?api_key=" + API_KEY
+console.log(url)
+
+const response = await fetch(url)
+const data = await response.json()
+console.log(data)
+
+const naamCastMember = data.also_known_as
+const profilePicture = "https://image.tmdb.org/t/p/w500" + data.profile_path
+const knownFor = data.known_for_department
+const bioCastMember = data.biography
+const birthDay = data.birthday
+const birthPlace = data.place_of_birth
+console.log('naam is:', naamCastMember)
+
+
 ---
 
 <MainLayout>
     <main>
-        <h1></h1>
-        <img src="" alt="">
-        <p></p>
-        <section id="played-in">
-            <h2></h2>
-            <img src="" alt="">
-            <p></p>
+        <section>
+            <div>
+                <h1>{actorName}</h1>
+                <img src={profilePicture} alt={`'Foto van' + naamCastMember`}>
+                <p>Geboren op {birthDay} in {birthPlace}</p>
+                <p>Is bekend voor: {knownFor}</p>
+                <p>{bioCastMember}</p>
+            </div>
         </section>
     </main>
 </MainLayout>
+
+<style>
+    section {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        width: 100%;
+        min-height: 100svh;
+
+            div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                img {
+                width: 25vw;
+				height: auto;
+				border-radius: 0.5rem;
+				object-fit: cover;
+                }
+
+                p:nth-of-type(3){
+                    text-align: center;
+                }
+            }
+        
+    }
+</style>

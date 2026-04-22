@@ -27,7 +27,7 @@ console.log("URL:", url);
 // fetch naar de movies
 const response = await fetch(url)
 const data = await response.json()
-console.log(data.results[0])
+// console.log(data.results[0])
 
 // om de posters van tmdm op te halen aan de hand van een random getaal
 // bron image oproepen: https://developer.themoviedb.org/docs/image-basics
@@ -52,7 +52,7 @@ const urlCast = base + endPointCast + "&api_key=" + API_KEY
 console.log(urlCast)
 const responseCast = await fetch(urlCast)
 const dataCast = await responseCast.json()
-console.log(dataCast.cast)
+// console.log(dataCast.cast)
 
 
 

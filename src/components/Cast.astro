@@ -5,6 +5,6 @@ const { id ,imageUrl, title, text } = Astro.props;
 <li>
     <h2>{title}</h2>
     <!-- id mee geven in de url naar de castdetailspage -->
-    <a href={`/castDetailsPage?id=${id}`} class="castMember"><img src={imageUrl} alt={title} /></a>
+    <a href={`/castDetailsPage?id=${id}&castname=${title}`} class="castMember"><img src={imageUrl} alt={title} /></a>
     <p>{text}</p>
 </li>
