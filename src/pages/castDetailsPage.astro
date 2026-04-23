@@ -36,7 +36,7 @@ console.log('naam is:', naamCastMember)
         <section>
             <div>
                 <h1>{actorName}</h1>
-                <img src={profilePicture} alt={`'Foto van' + naamCastMember`}>
+                <img src={profilePicture} alt={`'Foto van' + naamCastMember`} transition:name={"cast" + actorId}/>
                 <p>Geboren op {birthDay} in {birthPlace}</p>
                 <p>Is bekend voor: {knownFor}</p>
                 <p>{bioCastMember}</p>

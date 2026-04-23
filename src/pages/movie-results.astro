@@ -52,11 +52,6 @@ const urlCast = base + endPointCast + "&api_key=" + API_KEY
 console.log(urlCast)
 const responseCast = await fetch(urlCast)
 const dataCast = await responseCast.json()
-// console.log(dataCast.cast)
-
-
-
-
 
 // console.log("API data:", data);
 // console.log("Films:", data.results);
@@ -91,11 +86,11 @@ const dataCast = await responseCast.json()
 		<section>
 			<h2>Cast</h2>
 			<ul>
-				{dataCast.cast.map(function(castMember){
-					return (
-						<Cast id={castMember.id} imageUrl={"https://image.tmdb.org/t/p/w500"+castMember.profile_path} title={castMember.name} text={"Playing " +castMember.character} />
-					)
-				})}
+					{dataCast.cast.map(function(castMember){
+						return (
+							<Cast id={castMember.id} imageUrl={"https://image.tmdb.org/t/p/w500"+castMember.profile_path} title={castMember.name} text={"Playing " +castMember.character} transition:name={"cast" + castMember.id} transition:persist/>
+						)
+					})}
 			</ul>
 		</section>
 	</main>
