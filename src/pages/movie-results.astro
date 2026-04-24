@@ -53,6 +53,39 @@ console.log(urlCast)
 const responseCast = await fetch(urlCast)
 const dataCast = await responseCast.json()
 
+const customAnim = {
+  old: {
+    name: "bump",
+    duration: "0.5s",
+    easing: "ease-in",
+    direction: "reverse",
+  },
+  new: {
+    name: "bump",
+    duration: "0.5s",
+    easing: "ease-in",
+  },
+};
+
+const customAnimBackwards = {
+  old: {
+    name: "bumpBackwards",
+    duration: "0.5s",
+    easing: "ease-in",
+    direction: "reverse",
+  },
+  new: {
+    name: "bumpBackwards",
+    duration: "0.5s",
+    easing: "ease-in",
+  },
+};
+
+const customTransition = {
+  forwards: customAnim,
+  backwards: customAnimBackwards,
+};
+
 // console.log("API data:", data);
 // console.log("Films:", data.results);
 
@@ -88,7 +121,7 @@ const dataCast = await responseCast.json()
 			<ul>
 					{dataCast.cast.map(function(castMember){
 						return (
-							<Cast id={castMember.id} imageUrl={"https://image.tmdb.org/t/p/w500"+castMember.profile_path} title={castMember.name} text={"Playing " +castMember.character} transition:name={"cast" + castMember.id} transition:persist/>
+							<Cast id={castMember.id} imageUrl={"https://image.tmdb.org/t/p/w500"+castMember.profile_path} title={castMember.name} text={"Playing " +castMember.character} transitionName={"cast" + castMember.id} customTransition={customTransition}/>
 						)
 					})}
 			</ul>

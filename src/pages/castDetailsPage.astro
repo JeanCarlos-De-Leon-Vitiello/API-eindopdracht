@@ -20,13 +20,32 @@ const response = await fetch(url)
 const data = await response.json()
 console.log(data)
 
-const naamCastMember = data.also_known_as
+const naamCastMember = actorName ?? data.name
 const profilePicture = "https://image.tmdb.org/t/p/w500" + data.profile_path
 const knownFor = data.known_for_department
 const bioCastMember = data.biography
 const birthDay = data.birthday
 const birthPlace = data.place_of_birth
 console.log('naam is:', naamCastMember)
+
+const customAnim = {
+  old: {
+    name: "bump",
+    duration: "0.5s",
+    easing: "ease-in",
+    direction: "reverse",
+  },
+  new: {
+    name: "bump",
+    duration: "0.5s",
+    easing: "ease-in",
+  },
+};
+
+const customTransition = {
+  forwards: customAnim,
+  backwards: customAnim,
+};
 
 
 ---
@@ -36,7 +55,7 @@ console.log('naam is:', naamCastMember)
         <section>
             <div>
                 <h1>{actorName}</h1>
-                <img src={profilePicture} alt={`'Foto van' + naamCastMember`} transition:name={"cast" + actorId}/>
+                <img src={profilePicture} alt={`Foto van ${naamCastMember}`} transition:name={"cast" + actorId} transition:animate={customTransition} />
                 <p>Geboren op {birthDay} in {birthPlace}</p>
                 <p>Is bekend voor: {knownFor}</p>
                 <p>{bioCastMember}</p>
