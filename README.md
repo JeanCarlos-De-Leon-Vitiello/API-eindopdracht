@@ -142,6 +142,8 @@ Start of sluit je aan bij een studiecirkel over self-hosting
 **feedback sessie**
 tijdens de feedback sessie heb ik mijn opdracht besproken in de groep en wat ik uiteindelijk wil gaan maken. Ik verteld welke api's ik van plan ben te gebruiken om de eindresultaat te realiseren. Ik kreeg van Jad te horen dat als ik de web speech api wil gaan gebruiken dat ik ook gebruik moet gaan maken van de Web AI api zodat die de speech kan translate naar een mood. Ik heb besloten om dat te gaan doen als extra voor als ik extra tijd over heb.
 
+### Weeksamenvating
+
 ## week 2/1
 **Wat heb ik gedaan**
 - fetch gedaan naar de tmdb movie api om de films op te halen.
@@ -205,7 +207,6 @@ ze heeft heel veel pijn en is vaak moe.
 - als ze lang moet zoeken naar wat ze nodig heeft.
 
 
-
 **Voorbeeld 3: guido**
 heeft asperger. 
 
@@ -236,6 +237,8 @@ Volgende week wil ik een begin maken aan de functie om een film op te kunnen sla
 **feedback sessie**
 Tijdens de feedback sessie ben ik erachter gekomen dat localstorage api te klein is om te tellen voor mijn cijfer. Ook is het belangrijk dat ik een creatief deel creeer. Ik ben van plan iets met carousel te doen en of viewtransitions. Voor de rest was mijn idee goed en de code ook wel.
 
+### Weeksamenvating
+
 ## week 3/1
 **Wat heb ik gedaan**
 - 
@@ -257,6 +260,33 @@ Tijdens de feedback sessie ben ik erachter gekomen dat localstorage api te klein
 
 **feedback sessie**
 
+### Weeksamenvating
+
+## week 4/1
+**Wat heb ik gedaan**
+- 
+
+**Wat heb ik geleerd:**
+
+
+**Wat ga ik volgende week doen:**
+
+## week 4/2
+**Wat heb ik gedaan**
+- 
+
+**Wat heb ik geleerd:**
+
+
+**Wat ga ik volgende week doen:**
+
+
+**feedback sessie**
+
+### Weeksamenvating
+
+# Eind reflectie
+
 
 ## bronnen: 
 **devine:vars:** Variabel van ss (server side) naar cs (client side) doorgeven.
@@ -273,6 +303,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 **math.floor**
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
+
+**View-transitions**
+https://docs.astro.build/en/guides/view-transitions/
 
 ## AI bronnen
 **Prompt gebruikt voor uitleg over waarom -1 hier niet werkt:**
