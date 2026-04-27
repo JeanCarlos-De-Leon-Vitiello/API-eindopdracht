@@ -118,7 +118,7 @@ const customTransition = {
 
 		<section>
 			<h2>Cast</h2>
-			<ul>
+			<ul class="cast-carousel">
 					{dataCast.cast.map(function(castMember){
 						return (
 							<Cast id={castMember.id} imageUrl={"https://image.tmdb.org/t/p/w500"+castMember.profile_path} title={castMember.name} text={"Playing " +castMember.character} transitionName={"cast" + castMember.id} customTransition={customTransition}/>
@@ -192,17 +192,24 @@ const customTransition = {
 		}
 	}
 
-	ul {
+	.cast-carousel {
 		display: flex;
 		flex-direction: row;
 		overflow: scroll;
+		gap: 2vw;
+		perspective: 1000px;
+		scroll-snap-type: x mandatory;
+		padding: 2rem 40vw;
 		width: 100%;
 		height: fit-content;
 
-			li {
+
+			.cast-card {
 				display: grid;
 				grid-template-rows: 33vh fit-content fit-content;
 				margin-right: 2vw;
+				scroll-snap-align: center;
+  				transform-origin: center center;
 				
 				h2 {
 					grid-row: 2;

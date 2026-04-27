@@ -2,7 +2,7 @@
 const { transitionName, customTransition, id, imageUrl, title, text } = Astro.props;
 ---
 
-<li>
+<li class="cast-card">
     <h2>{title}</h2>
     <a href={`/castDetailsPage?id=${id}&castname=${title}`} class="castMember"><img src={imageUrl} alt={title} transition:name={transitionName} transition:animate={customTransition} /></a>
     <p>{text}</p>
