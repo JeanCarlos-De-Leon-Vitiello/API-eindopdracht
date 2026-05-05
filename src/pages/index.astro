@@ -6,11 +6,21 @@ import MainLayout from "../layouts/MainLayout.astro"
 
 		<MainLayout>
 			<main>
-				<button data-mood="happy">Happy</button>
-				<button data-mood="sad">Sad</button>
-				<button data-mood="romantic">Romantic</button>
-				<button data-mood="energetic">Energetic</button>
-				<button data-mood="stressed">Stressed</button>
+				<div class="intro">
+					<p class="label paragraaf">Movie match op gevoel</p>
+					<h1 class="grote-heading">Welcome bij Moodflix</h1>
+					<p class="paragraaf">Selecteer een mood die jou gevoel het best beschrijft om een passende film te zoeken.</p>
+				</div>
+				
+				<section aria-label="Kies je mood">
+					<div class="mood-grid">
+						<button data-mood="happy">Happy</button>
+						<button data-mood="sad">Sad</button>
+						<button data-mood="romantic">Romantic</button>
+						<button data-mood="energetic">Energetic</button>
+						<button data-mood="stressed">Stressed</button>
+					</div>
+				</section>
 			</main>
 
 			<!-- define:vars={{ moodNaarGenre }} geeft de variable door van de serverSide -->
@@ -32,4 +42,121 @@ import MainLayout from "../layouts/MainLayout.astro"
 			})
 			</script>
 
+			<style>
+			main {
+				width: 100%;
+				min-height: 100svh;
+				margin-inline: auto;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				gap: 3rem;
+				text-align: center;
+				padding-block: 4rem;
+
+				background:
+					radial-gradient(circle at top left, var(--kleur-primair-container), transparent 32rem),
+					linear-gradient(135deg, #11131b 0%, #181b26 48%, #101217 100%);
+				color: var(--kleur-op-oppervlak);
+			}
+
+			.intro {
+				display: grid;
+				justify-items: center;
+				gap: 1rem;
+			}
+
+			.label {
+				width: fit-content;
+				padding: 0.45rem 0.8rem;
+				border: 1px solid var(--kleur-omlijning-variant);
+				border-radius: 999px;
+				background-color: var(--kleur-primair-zacht);
+				color: var(--kleur-primair);
+				font-weight: 600;
+			}
+
+			h1 {
+				max-width: 12ch;
+				background: var(--verloop-primair);
+				background-clip: text;
+				color: transparent;
+			}
+
+			.intro > p:last-child {
+				max-width: 38rem;
+				color: var(--kleur-op-oppervlak-variant);
+				font-size: clamp(1rem, 2vw, 1.2rem);
+			}
+
+			section {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+			}
+
+			.mood-grid {
+				width: min(48rem, 100%);
+				display: grid;
+				grid-template-columns: repeat(5, minmax(0, 1fr));
+				gap: 0.75rem;
+				margin: 1rem;
+			}
+
+			button {
+				min-height: 3.25rem;
+				border: 1px solid var(--kleur-omlijning-variant);
+				border-radius: 8px;
+				background: rgba(255, 255, 255, 0.04);
+				color: var(--kleur-op-oppervlak);
+				font: inherit;
+				font-family: 'Inter', sans-serif;
+				font-weight: 600;
+				cursor: pointer;
+				transition:
+					transform 180ms ease,
+					border-color 180ms ease,
+					background-color 180ms ease,
+					box-shadow 180ms ease;
+			}
+
+			button:hover {
+				transform: translateY(-0.15rem);
+				border-color: var(--kleur-primair);
+				background-color: var(--kleur-primair-container);
+				box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.22);
+			}
+
+			button:focus {
+				outline: 3px solid var(--kleur-secundair);
+				outline-offset: 3px;
+			}
+
+			@media (max-width: 48rem) {
+				main {
+					gap: 4rem;
+				}
+
+				.mood-grid {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+
+				.mood-grid button:last-child {
+					grid-column: 1 / -1;
+				}
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				button {
+					transition: none;
+				}
+
+				button:hover {
+					transform: none;
+				}
+			}
+		</style>
+
 		</MainLayout>
+		

@@ -121,13 +121,49 @@ const customTransition = {
 			<ul class="cast-carousel">
 					{dataCast.cast.map(function(castMember){
 						return (
-							<Cast id={castMember.id} imageUrl={"https://image.tmdb.org/t/p/w500"+castMember.profile_path} title={castMember.name} text={"Playing " +castMember.character} transitionName={"cast" + castMember.id} customTransition={customTransition}/>
+							<Cast id={castMember.id} imageUrl={castMember.profile_path ? "https://image.tmdb.org/t/p/w500" + castMember.profile_path : "/images/no-img.png"} title={castMember.name} text={"Playing " +castMember.character} transitionName={"cast" + castMember.id} customTransition={customTransition}/>
 						)
 					})}
 			</ul>
 		</section>
 	</main>
 </MainLayout>
+
+<script>
+	// @ts-nocheck
+	const carousel = document.querySelector(".cast-carousel")
+	const cards = document.querySelectorAll(".cast-card")
+
+	function updateCarousel() {
+    const carouselCenter = carousel.scrollLeft + carousel.offsetWidth / 2
+
+    cards.forEach(function (card) {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2
+      const distance = Math.abs(carouselCenter - cardCenter)
+
+      const maxDistance = carousel.offsetWidth / 2
+      const progress = Math.min(distance / maxDistance, 1)
+
+      const scale = 1 - progress * 0.25
+      const z = -progress * 180
+
+      card.animate(
+        {
+          transform: `scale(${scale}) translateZ(${z}px)`
+        },
+        {
+          duration: 300,
+          fill: "forwards",
+          easing: "ease-out"
+        }
+      )
+    })
+  }
+
+  carousel.addEventListener("scroll", updateCarousel)
+  window.addEventListener("load", updateCarousel)
+	
+</script>
 
 <style>
 	main {
@@ -193,21 +229,24 @@ const customTransition = {
 	}
 
 	.cast-carousel {
+		width: 20vw;
+		height: auto;
 		display: flex;
 		flex-direction: row;
 		overflow: scroll;
-		gap: 2vw;
 		perspective: 1000px;
-		scroll-snap-type: x mandatory;
+		gap: 2rem;
+		/* scroll-snap-type: x mandatory; */
 		padding: 2rem 40vw;
 		width: 100%;
 		height: fit-content;
 
 
 			.cast-card {
+				width: 20vw;
+  				flex: 0 0 20vw;
 				display: grid;
 				grid-template-rows: 33vh fit-content fit-content;
-				margin-right: 2vw;
 				scroll-snap-align: center;
   				transform-origin: center center;
 				
@@ -217,8 +256,8 @@ const customTransition = {
 				}
 
 				img {
-					width: 20vw;
-					height: auto;
+					width: 100%;
+  					height: 33vh;
 					border-radius: 8px;
 					grid-area: 1/1;
 					object-fit: cover;

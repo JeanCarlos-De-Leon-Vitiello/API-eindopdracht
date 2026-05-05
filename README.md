@@ -224,7 +224,7 @@ alles komt extra hard bij hem binnen. advertenties die te luid zijn of visueel t
 ## week 2/2
 **Wat heb ik gedaan**
 - component gemaakt voor de buttons.
-- layout gemaakt van de head van de html om het op verschillende paginas te gebruiken.
+- layout gemaakt van de head van de html om het op verschillende pagina's te gebruiken.
 - fetch gedaan naar de cast van de films die ik ophaal met de randomindex.
 - poster van de film opgehaald en de backdrop
 
@@ -241,7 +241,11 @@ Tijdens de feedback sessie ben ik erachter gekomen dat localstorage api te klein
 
 ## week 3/1
 **Wat heb ik gedaan**
-- 
+- Een aparte Cast.astro component gemaakt om castleden herbruikbaar te tonen.
+- De castleden uit de TMDB API op de resultatenpagina gezet.
+- Per castlid de naam, afbeelding en rol in de film getoond.
+- Een link toegevoegd zodat je vanaf een castlid naar een detailpagina kunt gaan.
+- De id en castname van een castlid meegegeven via de URL zodat je op de resultaten pagina de details kan tonen van die cast lid.
 
 **Wat heb ik geleerd:**
 
@@ -250,7 +254,11 @@ Tijdens de feedback sessie ben ik erachter gekomen dat localstorage api te klein
 
 ## week 3/2
 **Wat heb ik gedaan**
-- 
+- Een aparte castDetailsPage.astro gemaakt voor de detailpagina van een acteur.
+- Met Astro.url.searchParams.get() de actor id en naam uit de URL gehaald.
+- Een fetch gedaan naar de TMDB person API om extra informatie over een acteur op te halen.
+- De profielfoto, geboortedatum, geboorteplaats, afdeling en biografie van de acteur getoond.
+- Astro View Transitions toegevoegd tussen de castkaart en de detailpagina.
 
 **Wat heb ik geleerd:**
 
@@ -264,7 +272,11 @@ Tijdens de feedback sessie ben ik erachter gekomen dat localstorage api te klein
 
 ## week 4/1
 **Wat heb ik gedaan**
-- 
+- Een carousel gemaakt voor de castlijst op de resultatenpagina.
+- De castlijst een cast-carousel class gegeven en elke castkaart een cast-card class.
+- CSS scroll snap toegevoegd zodat de kaarten netjes naar het midden scrollen.
+- Perspective en transform-origin toegevoegd om een 3D effect mogelijk te maken.
+- Onderzocht hoe scrollLeft, offsetWidth en offsetLeft werken om het midden van de carousel te berekenen.
 
 **Wat heb ik geleerd:**
 
@@ -273,7 +285,11 @@ Tijdens de feedback sessie ben ik erachter gekomen dat localstorage api te klein
 
 ## week 4/2
 **Wat heb ik gedaan**
-- 
+- De Web Animations API gebruikt om de castkaarten te animeren tijdens het scrollen.
+- Berekend welke kaart het dichtst bij het midden van de carousel staat.
+- Met Math.abs() en Math.min() een progress waarde gemaakt tussen 0 en 1.
+- De kaarten groter of kleiner gemaakt op basis van hun afstand tot het midden.
+- Met translateZ() de middelste kaart meer naar voren gezet en kaarten verder van het midden naar achteren geplaatst.
 
 **Wat heb ik geleerd:**
 
@@ -306,6 +322,21 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 **View-transitions**
 https://docs.astro.build/en/guides/view-transitions/
+
+**scrollLeft**
+https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft
+
+**offsetWidth**
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth
+
+**offsetLeft**
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetLeft
+
+**math.abs**
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/abs
+
+**math.min**
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min
 
 ## AI bronnen
 **Prompt gebruikt voor uitleg over waarom -1 hier niet werkt:**
