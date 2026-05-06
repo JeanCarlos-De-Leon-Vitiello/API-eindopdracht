@@ -104,20 +104,20 @@ const customTransition = {
 
 <MainLayout>
 	<main>
-		<article>
-			<img src={backDropUrl} alt="">
-			<div>
-				<h1>Films voor mood: {mood}</h1>
-				<img src={posterUrl} alt="">
-				<div>
-					<h2>{filmTitel}</h2>
-					<p>{filmBeschrijving}</p>
+		<article class="movie-hero">
+			<img class="backdrop" src={backDropUrl} alt="">
+			<div class="movie-content">
+				<p class="label paragraaf">Films voor mood: {mood}</p>
+				<img class="poster" src={posterUrl} alt="">
+				<div class="movie-copy">
+					<h1 class="grote-heading">{filmTitel}</h1>
+					<p class="paragraaf">{filmBeschrijving}</p>
 				</div>
 			</div>
 		</article>
 
-		<section>
-			<h2>Cast</h2>
+		<section class="cast-section">
+			<h2 class="medium-heading">Cast</h2>
 			<ul class="cast-carousel">
 					{dataCast.cast.map(function(castMember){
 						return (
@@ -170,94 +170,146 @@ const customTransition = {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		height: 100%;
+		min-height: 100svh;
+		background:
+			radial-gradient(circle at top right, var(--kleur-primair-container), transparent 100rem),
+			linear-gradient(135deg, #11131b 0%, #181b26 48%, #101217 100%);
+		color: var(--kleur-op-oppervlak);
+		overflow-x: hidden;
 	}
 
-	article {
+	.movie-hero {
 		width: 100%;
-		height: fit-content;
-
+		min-height: 82svh;
 		display: grid;
 		grid-template-rows: 1fr;
+		position: relative;
+		/* de elementen met z index blijven in de element */
+		isolation: isolate;
 
-		> img {
+		.backdrop {
 			grid-area: 1/1;
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
+			opacity: 0.34;
+			filter: saturate(0.85);
+		}
+
+		&::after {
+			content: "";
+			grid-area: 1/1;
+			background:
+				linear-gradient(90deg, rgba(17, 19, 27, 0.94) 0%, rgba(17, 19, 27, 0.78) 42%, rgba(17, 19, 27, 0.3) 100%),
+				linear-gradient(0deg, #11131b 0%, rgba(17, 19, 27, 0) 34%);
+			z-index: -1;
+		}
+
+		.movie-content {
+			grid-area: 1/1;
+			width: min(72rem, calc(100% - 2rem));
+			margin-inline: auto;
+			padding-block: 5rem;
+			display: grid;
+			grid-template-columns: minmax(12rem, 20rem) minmax(0, 1fr);
+			grid-template-rows: auto auto;
+			align-content: center;
+			align-items: end;
+			gap: 1.5rem 2rem;
+			z-index: 1;
+		}
+
+		.label {
+			grid-column: 1 / -1;
+			width: fit-content;
+			padding: 0.45rem 0.8rem;
+			border: 1px solid var(--kleur-omlijning-variant);
+			border-radius: 999px;
+			background-color: var(--kleur-primair-zacht);
+			color: var(--kleur-primair);
+			font-weight: 600;
+		}
+
+		.poster {
+			width: 100%;
+			border-radius: 8px;
+			object-fit: cover;
+		}
+
+		.movie-copy {
+			display: grid;
+			gap: 1rem;
+			max-width: 42rem;
+			padding-bottom: 0.5rem;
+			text-align: left;
 		}
 
 		h1 {
-			height: fit-content;
-			grid-column: 1 / span 2;
-			align-self: center;
+			background: var(--verloop-primair);
+			background-clip: text;
+			color: transparent;
 		}
 
-		> div {
-			grid-area: 1/1;
-			margin: 5rem;
+		.movie-copy p {
+			color: var(--kleur-op-oppervlak-variant);
+			font-size: clamp(1rem, 2vw, 1.15rem);
+			line-height: 1.7;
+		}
+	}
 
-			display: grid;
-			grid-template-columns: 25vw 1fr;
-			grid-template-rows: 1fr auto;
+	.cast-section {
+		display: grid;
+		gap: 1.5rem;
+		padding-block: 3rem 5rem;
 
-			img {
-				width: 25vw;
-				height: auto;
-				border-radius: 0.5rem;
-				object-fit: cover;
-				grid-column: 1;
-				grid-row: 2 / span 2;
-			}
-
-			div {
-				grid-column: 2;
-				grid-row: 2 / span 2;
-				height: fit-content;
-			}
-
-			h2 {
-				height: fit-content;
-			}
-
-			p {
-				height: fit-content;
-			}
-
-
+		> h2 {
+			width: min(72rem, calc(100% - 2rem));
+			margin-inline: auto;
+			color: var(--kleur-op-oppervlak);
 		}
 	}
 
 	.cast-carousel {
-		width: 20vw;
-		height: auto;
 		display: flex;
 		flex-direction: row;
-		overflow: scroll;
+		overflow-x: auto;
+		overflow-y: visible;
 		perspective: 1000px;
 		gap: 2rem;
 		/* scroll-snap-type: x mandatory; */
-		padding: 2rem 40vw;
+		padding: 2rem 40vw 3rem;
 		width: 100%;
 		height: fit-content;
+		list-style: none;
+		scrollbar-color: var(--kleur-primair) transparent;
 
 
 			.cast-card {
-				width: 20vw;
-  				flex: 0 0 20vw;
+				width: clamp(11rem, 20vw, 16rem);
+  				flex: 0 0 clamp(11rem, 20vw, 16rem);
 				display: grid;
-				grid-template-rows: 33vh fit-content fit-content;
+				grid-template-rows: clamp(15rem, 33vh, 22rem) auto auto;
+				gap: 0.5rem;
 				scroll-snap-align: center;
   				transform-origin: center center;
+				padding: 0.75rem;
+				border: 1px solid var(--kleur-omlijning-variant);
+				border-radius: 8px;
+				background: rgba(255, 255, 255, 0.04);
+				box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.18);
 				
 				h2 {
 					grid-row: 2;
 					height: fit-content;
+					color: var(--kleur-op-oppervlak);
+					font-family: 'Plus Jakarta Sans', sans-serif;
+					font-size: clamp(1rem, 2vw, 1.15rem);
+					line-height: 1.2;
 				}
 
 				img {
 					width: 100%;
-  					height: 33vh;
+  					height: 100%;
 					border-radius: 8px;
 					grid-area: 1/1;
 					object-fit: cover;
@@ -266,8 +318,46 @@ const customTransition = {
 
 				p {
 					grid-row: 3;
+					color: var(--kleur-op-oppervlak-variant);
+					font-family: 'Inter', sans-serif;
+					font-size: 0.9rem;
+					line-height: 1.4;
 				}
 			}
 
 		}
+
+	@media (max-width: 48rem) {
+		.movie-hero {
+			min-height: auto;
+
+			.movie-content {
+				grid-template-columns: 1fr;
+				padding-block: 3rem;
+			}
+
+			.poster {
+				width: min(16rem, 72vw);
+			}
+
+			.movie-copy {
+				text-align: center;
+				justify-items: center;
+			}
+
+			.label {
+				justify-self: center;
+			}
+		}
+
+		.cast-carousel {
+			padding-inline: 2rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.cast-card {
+			transform: none;
+		}
+	}
 </style>

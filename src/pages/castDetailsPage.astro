@@ -52,42 +52,117 @@ const customTransition = {
 
 <MainLayout>
     <main>
-        <section>
-            <div>
-                <h1>{actorName}</h1>
-                <img src={profilePicture} alt={`Foto van ${naamCastMember}`} transition:name={"cast" + actorId} transition:animate={customTransition} />
-                <p>Geboren op {birthDay} in {birthPlace}</p>
-                <p>Is bekend voor: {knownFor}</p>
-                <p>{bioCastMember}</p>
+        <section class="actor-section">
+            <div class="actor-card">
+                <p class="label paragraaf">Cast detail</p>
+                <img class="actor-photo" src={profilePicture} alt={`Foto van ${naamCastMember}`} transition:name={"cast" + actorId} transition:animate={customTransition} />
+                <div class="actor-copy">
+                    <h1 class="grote-heading">{actorName}</h1>
+                    <div class="actor-facts">
+                        <p class="paragraaf">Geboren op {birthDay} in {birthPlace}</p>
+                        <p class="paragraaf">Is bekend voor: {knownFor}</p>
+                    </div>
+                    <p class="bio paragraaf">{bioCastMember}</p>
+                </div>
             </div>
         </section>
     </main>
 </MainLayout>
 
 <style>
-    section {
-        display: grid;
-        justify-items: center;
-        align-items: center;
+    main {
         width: 100%;
         min-height: 100svh;
+        background:
+            radial-gradient(circle at top left, var(--kleur-primair-container), transparent 42rem),
+            linear-gradient(135deg, #11131b 0%, #181b26 48%, #101217 100%);
+        color: var(--kleur-op-oppervlak);
+    }
 
-            div {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+    .actor-section {
+        width: min(72rem, calc(100% - 2rem));
+        min-height: 100svh;
+        margin-inline: auto;
+        display: flex;
+        align-items: center;
+        padding-block: 4rem;
+    }
 
-                img {
-                width: 25vw;
-				height: auto;
-				border-radius: 0.5rem;
-				object-fit: cover;
-                }
+    .actor-card {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1rem;
+        border: 1px solid var(--kleur-omlijning-variant);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.28);
+    }
 
-                p:nth-of-type(3){
-                    text-align: center;
-                }
-            }
-        
+    .label {
+        width: fit-content;
+        padding: 0.45rem 0.8rem;
+        border: 1px solid var(--kleur-omlijning-variant);
+        border-radius: 999px;
+        background-color: var(--kleur-primair-zacht);
+        color: var(--kleur-primair);
+        font-weight: 600;
+    }
+
+    .actor-photo {
+        width: min(22rem, 72vw);
+        aspect-ratio: 2 / 3;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    .actor-copy {
+        display: grid;
+        justify-items: center;
+        gap: 1.25rem;
+        padding-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    h1 {
+        background: var(--verloop-primair);
+        background-clip: text;
+        color: transparent;
+    }
+
+    .actor-facts {
+        display: grid;
+        gap: 0.5rem;
+        padding-block: 0.75rem;
+        border-block: 1px solid var(--kleur-omlijning-variant);
+        color: var(--kleur-op-oppervlak);
+    }
+
+    .bio {
+        max-width: 58rem;
+        color: var(--kleur-op-oppervlak-variant);
+        font-size: clamp(1rem, 2vw, 1.08rem);
+        line-height: 1.7;
+    }
+
+    @media (max-width: 48rem) {
+        .actor-section {
+            align-items: flex-start;
+            padding-block: 2rem;
+        }
+
+        .actor-card {
+            padding: 1rem;
+        }
+
+        .actor-photo {
+            width: min(16rem, 72vw);
+        }
+
+        .actor-copy {
+            text-align: center;
+        }
     }
 </style>

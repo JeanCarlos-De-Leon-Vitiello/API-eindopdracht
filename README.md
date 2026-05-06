@@ -55,7 +55,8 @@ local storage api
 view transition
 
 **voorang:**
-scroll driven annimation
+web annimation api 
+view transition api
 
 **extra:**
 web ai api
@@ -142,7 +143,12 @@ Start of sluit je aan bij een studiecirkel over self-hosting
 **feedback sessie**
 tijdens de feedback sessie heb ik mijn opdracht besproken in de groep en wat ik uiteindelijk wil gaan maken. Ik verteld welke api's ik van plan ben te gebruiken om de eindresultaat te realiseren. Ik kreeg van Jad te horen dat als ik de web speech api wil gaan gebruiken dat ik ook gebruik moet gaan maken van de Web AI api zodat die de speech kan translate naar een mood. Ik heb besloten om dat te gaan doen als extra voor als ik extra tijd over heb.
 
-### Weeksamenvating
+### Weeksamenvating 1
+Deze week heb ik mijn idee voor de API-opdracht uitgewerkt en een begin gemaakt door te kijken naar welke api's ik kan gaan gebruiken en welke api's er zijn. Ik wil een movie website maken waarbij gebruikers op basis van hun mood een passende film kunnen vinden. Daarvoor heb ik gekozen om de TMDB API te gebruiken als content API. Ik heb een eerste fetch gedaan naar de TMDB API en ben begonnen met het koppelen van moods aan filmgenres. Ook heb ik buttons gemaakt met een data-mood attribuut, zodat ik kan uitlezen welke mood de gebruiker kiest wanneer de gebruiker er op heeft geklikt.
+
+Ik heb onderzocht hoe ik de gekozen mood kan doorgeven naar een andere pagina. Eerst wilde ik hiervoor localStorage gebruiken, maar ik kwam erachter dat dit client-side werkt en minder geschikt was voor mijn situatie, omdat ik de fetch server side doe. Daarom heb ik ervoor gekozen om de mood via de URL als param mee te geven en deze in Astro uit te lezen met Astro.url.searchParams.get("mood"). Ook heb ik geleerd dat Astro pagina’s standaard prerendered, en dat ik met export const prerender = false; kan zorgen dat de pagina dynamisch werkt met URL-parameters. Anders doet de fetch niks met wat de gebruiker heeft gekozen.
+
+Deze week heb ik vooral geleerd hoe ik data-attributen kan gebruiken, hoe ik waarden uit buttons kan ophalen met .getAttribute(), hoe ik een fetch naar de TMDB API uitvoer, hoe URL search parameters werken en waarom server-side fetches belangrijk zijn om mijn API key veilig te houden.
 
 ## week 2/1
 **Wat heb ik gedaan**
@@ -237,7 +243,12 @@ Volgende week wil ik een begin maken aan de functie om een film op te kunnen sla
 **feedback sessie**
 Tijdens de feedback sessie ben ik erachter gekomen dat localstorage api te klein is om te tellen voor mijn cijfer. Ook is het belangrijk dat ik een creatief deel creeer. Ik ben van plan iets met carousel te doen en of viewtransitions. Voor de rest was mijn idee goed en de code ook wel.
 
-### Weeksamenvating
+### Weeksamenvating 2
+Deze week heb ik de resultatenpagina verder opgebouwd. Ik heb een fetch gedaan naar de TMDB Movie API om films op te halen op basis van de gekozen mood en het gekoppelde genre. Daarna heb ik met Math.random() en Math.floor() een willekeurige film uit de resultaten gekozen. Van deze film heb ik informatie zoals de titel, beschrijving, poster en backdrop opgehaald en in de HTML getoond.
+
+Ook ben ik verder gegaan met het opdelen van mijn project in herbruikbare onderdelen. Ik heb gewerkt met layouts en components, zodat ik dezelfde structuur op meerdere pagina’s kan gebruiken. Daarbij heb ik geleerd hoe ik met Astro.props waardes kan meegeven aan een component of layout. Daarnaast heb ik een fetch gedaan naar de cast van de gekozen film, zodat ik castinformatie kan tonen die hoort bij de random film.
+
+Deze week heb ik vooral geleerd hoe URL-query’s werken, zoals het verschil tussen ? en & in een URL. Ook heb ik beter leren werken met Math.random() en Math.floor(). Ik kwam erachter dat ik geen -1 hoef te doen bij het berekenen van een random index, omdat Math.random() nooit precies 1 wordt. Door die fout weg te halen kreeg ik geen errors meer bij bepaalde indexen. Tijdens de feedbacksessie heb ik geleerd dat localStorage waarschijnlijk te klein is als hoofd-Web API voor mijn beoordeling, waardoor ik ben gaan nadenken over andere toepassingen zoals een carousel en View Transitions.
 
 ## week 3/1
 **Wat heb ik gedaan**
@@ -248,9 +259,12 @@ Tijdens de feedback sessie ben ik erachter gekomen dat localstorage api te klein
 - De id en castname van een castlid meegegeven via de URL zodat je op de resultaten pagina de details kan tonen van die cast lid.
 
 **Wat heb ik geleerd:**
+Ik heb geleerd hoe ik componenten kan gebruiken om mijn HTML overzichtelijker en herbruikbaarder te maken. In plaats van dezelfde structuur steeds opnieuw te schrijven, kan ik één component maken en daar verschillende data aan meegeven met Astro.props. Dit heb ik toegepast bij de castkaarten, waarbij ik de data uit de TMDB API doorgeef aan mijn Cast.astro component.
 
+Ook heb ik geleerd hoe ik met .map() meerdere castleden kan renderen op basis van de API-data. Voor elk castlid wordt automatisch dezelfde component gebruikt, maar met andere informatie zoals de naam, afbeelding en rol. Daarnaast heb ik geleerd hoe ik informatie via de URL kan meegeven, bijvoorbeeld de id en castname van een castlid. Daardoor kan ik op een detailpagina de juiste data ophalen op basis van de waarde uit de URL. Hierdoor begrijp ik beter waarom componenten handig zijn wanneer dezelfde soort content meerdere keren terugkomt, zoals bij castkaarten.
 
-**Wat ga ik volgende week doen:**
+**Wat ga ik volgende keer doen:**
+Volgende keer wil ik een aparte detailpagina maken voor een acteur. Op die pagina wil ik de id en naam uit de URL halen met Astro.url.searchParams.get(). Daarna wil ik met de actor id een fetch doen naar de TMDB person API, zodat ik extra informatie kan tonen zoals de profielfoto, geboortedatum, geboorteplaats, afdeling en biografie. Ook wil ik onderzoeken hoe ik Astro View Transitions kan gebruiken om de overgang tussen de castkaart en de detailpagina mooier te maken.
 
 ## week 3/2
 **Wat heb ik gedaan**
@@ -261,14 +275,24 @@ Tijdens de feedback sessie ben ik erachter gekomen dat localstorage api te klein
 - Astro View Transitions toegevoegd tussen de castkaart en de detailpagina.
 
 **Wat heb ik geleerd:**
+Ik heb geleerd hoe ik een aparte detailpagina kan maken voor een castlid en hoe ik data via de URL kan hergebruiken op die pagina. Met Astro.url.searchParams.get() kan ik de id en naam van een acteur uit de URL halen en die gebruiken om een nieuwe fetch te doen naar de TMDB person API. Daardoor kan ik per acteur specifieke informatie tonen, zoals de profielfoto, geboortedatum, geboorteplaats, afdeling en biografie.
 
+Ook heb ik geleerd hoe Astro View Transitions werken tussen twee pagina’s. Door dezelfde transition:name te gebruiken op de castafbeelding en de detailafbeelding kan Astro een overgang maken tussen de castkaart en de detailpagina. De animatie wordt gekoppeld doordat elke castafbeelding een unieke transition name krijgt op basis van de actor id, bijvoorbeeld "cast" + castMember.id. Op de detailpagina gebruik ik dezelfde naam opnieuw met "cast" + actorId. Daardoor begrijpt Astro dat deze twee afbeeldingen bij elkaar horen en kan de afbeelding van de castkaart overgaan naar de afbeelding op de detailpagina. Met transition:animate bepaal ik vervolgens hoe die overgang beweegt. Hierdoor voelt de navigatie minder plotseling en wordt de relatie tussen de kaart en de detailpagina duidelijker.
 
 **Wat ga ik volgende week doen:**
-
+Volgende week wil ik verder werken aan de creatieve interactie van mijn project. Uit de feedback kwam naar voren dat de View Transition goed werkt, maar dat ik ook nog iets moet doen met de Web Animations API. Daarom wil ik een carousel maken of verbeteren waarbij de castkaarten animeren tijdens het scrollen. Mijn doel is dat de kaart in het midden meer naar voren komt en dat kaarten verder van het midden kleiner of meer naar achter worden geplaatst.
 
 **feedback sessie**
+Bij de feedback sessie hebben we het vooral gehad over het afronden van de eindopdracht. De toepassing van de viewtransition was goed alleen moet ik nog iets gaan doen met de annimations api. Dat gaat mijn focus zijn voor volgende week.
 
-### Weeksamenvating
+### Weeksamenvating 3
+Deze week heb ik gewerkt aan het tonen van castleden en het maken van een detailpagina voor acteurs. Ik heb een aparte Cast.astro component gemaakt, zodat ik castkaarten herbruikbaar kan tonen op de resultatenpagina. De castdata haal ik op uit de TMDB API en geef ik per castlid door aan de component met Astro.props. Met .map() render ik automatisch meerdere castkaarten, waarbij elke kaart eigen data krijgt zoals naam, afbeelding en rol.
+
+Daarnaast heb ik ervoor gezorgd dat je vanaf een castkaart naar een detailpagina kunt gaan. Hiervoor geef ik de id en castname van een castlid mee via de URL. Op de detailpagina lees ik deze waarden weer uit met Astro.url.searchParams.get(). Daarna doe ik met de actor id een nieuwe fetch naar de TMDB person API, zodat ik extra informatie over de acteur kan tonen, zoals de profielfoto, geboortedatum, geboorteplaats, afdeling en biografie.
+
+Ook heb ik Astro View Transitions toegevoegd tussen de castkaart en de detailpagina. Door dezelfde transition:name te gebruiken op de castafbeelding en de detailafbeelding begrijpt Astro dat deze twee afbeeldingen bij elkaar horen. Met transition:animate bepaal ik hoe de overgang beweegt. Hierdoor voelt de overgang tussen de resultatenpagina en de detailpagina vloeiender en duidelijker.
+
+Tijdens de feedbacksessie kreeg ik terug dat de View Transition goed werkt, maar dat ik ook nog iets moet doen met de Web Animations API. Daarom wil ik volgende week verder werken aan een creatieve interactie, zoals een carousel waarbij de middelste castkaart meer naar voren komt en kaarten aan de zijkant kleiner of verder naar achter worden geplaatst.
 
 ## week 4/1
 **Wat heb ik gedaan**
@@ -279,9 +303,12 @@ Tijdens de feedback sessie ben ik erachter gekomen dat localstorage api te klein
 - Onderzocht hoe scrollLeft, offsetWidth en offsetLeft werken om het midden van de carousel te berekenen.
 
 **Wat heb ik geleerd:**
+Ik heb geleerd hoe ik een horizontale carousel kan opbouwen met CSS en hoe ik de castkaarten daarin goed kan positioneren. Door de castlijst een cast-carousel class te geven en elke kaart een cast-card class, kan ik de carousel en de individuele kaarten apart stylen en selecteren met JavaScript. Ook heb ik geleerd hoe CSS Scroll Snap werkt om kaarten naar het midden te laten snappen.
 
+Daarnaast heb ik onderzocht hoe ik met JavaScript het midden van de carousel kan berekenen. Hierbij heb ik geleerd wat scrollLeft, offsetWidth en offsetLeft betekenen. scrollLeft geeft aan hoeveel pixels er horizontaal is gescrold, offsetWidth geeft de zichtbare breedte van een element en offsetLeft geeft de positie van een kaart vanaf de linkerkant. Door deze waardes kan ik berekenen welke kaart het dichtst bij het midden van de carousel staat. Ook heb ik geleerd dat perspective en transform-origin nodig zijn om later een 3D-effect te kunnen maken met transforms zoals translateZ() en scale().
 
-**Wat ga ik volgende week doen:**
+**Wat ga ik volgende keer doen:**
+Volgende keer wil ik de carousel verder uitbreiden met de Web Animations API. Ik wil berekenen hoe ver elke castkaart van het midden staat en die afstand gebruiken om de kaarten te animeren. Het doel is dat de middelste kaart groter en meer naar voren komt, terwijl de kaarten verder van het midden kleiner worden en meer naar achter lijken te staan.
 
 ## week 4/2
 **Wat heb ik gedaan**
@@ -290,19 +317,44 @@ Tijdens de feedback sessie ben ik erachter gekomen dat localstorage api te klein
 - Met Math.abs() en Math.min() een progress waarde gemaakt tussen 0 en 1.
 - De kaarten groter of kleiner gemaakt op basis van hun afstand tot het midden.
 - Met translateZ() de middelste kaart meer naar voren gezet en kaarten verder van het midden naar achteren geplaatst.
+- fallback img ingesteld
+- :global() gebruik je als een html element bijvoorbeeld in een layout zit maar je wilt stylen op de normale pagina
 
 **Wat heb ik geleerd:**
+Ik heb geleerd hoe ik de Web Animations API kan gebruiken om elementen te animeren met JavaScript. In mijn carousel bereken ik eerst waar het midden van de carousel is en daarna waar het midden van elke castkaart staat. Met Math.abs() bereken ik de afstand tussen de kaart en het midden, zonder dat de uitkomst negatief wordt. Daarna gebruik ik Math.min() om van die afstand een progress waarde te maken die maximaal 1 kan zijn.
 
+Ook heb ik geleerd hoe ik die progress kan gebruiken om de animatie te bepalen. Als een kaart dicht bij het midden staat, blijft de scale groter en staat de kaart meer naar voren. Als een kaart verder van het midden staat, wordt de kaart kleiner en gaat hij met translateZ() meer naar achter.
 
 **Wat ga ik volgende week doen:**
-
+Volgende week wil ik mijn project verder afronden en verbeteren. Ik wil de styling van de pagina’s af maken, zodat de homepage, resultatenpagina en cast detailpagina beter bij elkaar passen. Ook wil ik de carousel nog testen en finetunen, zodat de animatie stabiel blijft tijdens het scrollen en goed werkt met fallback-afbeeldingen. Daarnaast wil ik mijn README verder af maken.
 
 **feedback sessie**
+Bij de feedback sessie hebben we het vooral gehad over het afronden van de eindopdracht. De toepassing van de viewtransition was goed alleen moet ik nog iets gaan doen met de annimations api. Dat gaat mijn focus zijn voor volgende week.
 
-### Weeksamenvating
+### Weeksamenvating 4
+Deze week heb ik gewerkt aan de cast carousel op de resultatenpagina. Ik heb de castlijst omgezet naar een carousel en de lijst een cast-carousel class gegeven. Elke castkaart heeft een cast-card class gekregen, zodat ik de carousel en de losse kaarten apart kan stylen en selecteren met JavaScript. Ook heb ik CSS Scroll Snap getest om de kaarten netjes naar het midden te laten snappen.
+
+Daarna heb ik onderzocht hoe ik met JavaScript kan berekenen welke kaart het dichtst bij het midden van de carousel staat. Hiervoor heb ik gewerkt met scrollLeft, offsetWidth en offsetLeft. Met deze waardes kan ik het midden van de carousel en het midden van elke kaart berekenen. Vervolgens heb ik de Web Animations API gebruikt om de castkaarten tijdens het scrollen te animeren.
+
+Met Math.abs() bereken ik de afstand tussen een kaart en het midden zonder negatieve waardes te krijgen. Met Math.min() maak ik daar een progress waarde van tussen 0 en 1. Die progress gebruik ik om de grootte en diepte van de kaarten te bepalen. Kaarten dicht bij het midden blijven groter en staan meer naar voren, terwijl kaarten verder van het midden kleiner worden en met translateZ() naar achter lijken te gaan.
+
+Ook heb ik een fallback image ingesteld voor castleden zonder afbeelding en geleerd waarom vaste image-formaten belangrijk zijn voor een stabiele carousel. Daarnaast heb ik geleerd wanneer je :global() in Astro gebruikt, bijvoorbeeld wanneer je een HTML-element wilt stylen dat eigenlijk in een layout staat.
+
+## week 5
+**wat heb ik gedaan**
+- de styling van de pagina's afgemaakt
+- readme afgemaakt
 
 # Eind reflectie
+Tijdens de api opdracht heb ik een movie website gemaakt waarbij gebruikers op basis van hun mood een film kunnen vinden. Ik ben begonnen met het onderzoeken van verschillende API’s en heb uiteindelijk gekozen voor de TMDB API als content API. Hiermee haal ik films, castinformatie en acteurdetails op. Door de gekozen mood via de URL mee te geven, kan ik deze server-side uitlezen in Astro en daarna een fetch doen naar de TMDB API.
 
+Ik heb veel geleerd over het werken met Astro. Zo heb ik geleerd hoe ik pagina’s dynamisch kan maken met export const prerender = false, hoe ik query parameters kan uitlezen met Astro.url.searchParams.get() en hoe ik data kan doorgeven aan components met Astro.props. Door een aparte Cast.astro component te maken, werd mijn code overzichtelijker en kon ik castkaarten herbruikbaar tonen met .map().
+
+Ook heb ik gewerkt met meerdere web API’s. Ik heb Astro View Transitions gebruikt om de overgang tussen een castkaart en de detailpagina vloeiender te maken. Daarnaast heb ik de Web Animations API gebruikt voor de cast carousel. Hierbij bereken ik met scrollLeft, offsetWidth en offsetLeft welke kaart het dichtst bij het midden staat. Met Math.abs() en Math.min() maak ik daar een progress waarde van, waarmee ik de kaarten groter, kleiner, naar voren of naar achter kan animeren met scale() en translateZ().
+
+Een belangrijk leerpunt was dat kleine technische keuzes veel invloed kunnen hebben op hoe stabiel een interface voelt. Bij de carousel merkte ik bijvoorbeeld dat afbeeldingen zonder vaste afmetingen of ontbrekende afbeeldingen de berekening konden breken waardoor scroll snap raar deed. Daarom heb ik gewerkt met vaste formaten en een fallback image. Ook heb ik geleerd dat toegankelijkheid belangrijk blijft bij animaties, bijvoorbeeld door rekening te houden met prefers-reduced-motion.
+
+Als ik verder zou werken aan dit project, zou ik de interacties nog meer verfijnen. Ik zou bijvoorbeeld de carousel stabieler maken op verschillende schermgroottes, de biografie op de detailpagina inklapbaar maken met een “Lees meer”-knop en misschien alsnog experimenteren met spraakinput of AI om een mood automatisch te herkennen. Over het algemeen ben ik tevreden met wat ik heb gebouwd, omdat ik meerdere API’s heb gecombineerd en beter ben gaan begrijpen hoe client-side interactie, server-side data en animatie samenkomen in één project.
 
 ## bronnen: 
 **devine:vars:** Variabel van ss (server side) naar cs (client side) doorgeven.
@@ -341,5 +393,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 ## AI bronnen
 **Prompt gebruikt voor uitleg over waarom -1 hier niet werkt:**
 "Ik gebruik in JavaScript `Math.floor(Math.random() * data.results.length - 1)` om een random film uit een array te kiezen, maar soms krijg ik de error `Cannot read properties of undefined`. Kun je uitleggen waarom de `- 1` hier fout gaat, waarom daardoor soms index `-1` ontstaat, en waarom `Math.floor(Math.random() * data.results.length)` wel goed werkt?"
+
+**Prompt gebruikt voor uitleg over het berekenen van het midden van de carousel:**
+"Ik maak een horizontale carousel in JavaScript en wil weten welke kaart het dichtst bij het midden staat. Wat heb ik nodig om het midden van de carousel te berekenen? Kun je uitleggen wat `scrollLeft`, `offsetWidth` en `offsetLeft` doen, hoe ik daarmee `carouselCenter` en `cardCenter` bereken, en hoe ik daarna met `Math.abs(carouselCenter - cardCenter)` de afstand tussen een kaart en het midden kan bepalen?"
 
 
