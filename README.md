@@ -357,6 +357,9 @@ Een belangrijk leerpunt was dat kleine technische keuzes veel invloed kunnen heb
 Als ik verder zou werken aan dit project, zou ik de interacties nog meer verfijnen. Ik zou bijvoorbeeld de carousel stabieler maken op verschillende schermgroottes, de biografie op de detailpagina inklapbaar maken met een “Lees meer”-knop en misschien alsnog experimenteren met spraakinput of AI om een mood automatisch te herkennen. Over het algemeen ben ik tevreden met wat ik heb gebouwd, omdat ik meerdere API’s heb gecombineerd en beter ben gaan begrijpen hoe client-side interactie, server-side data en animatie samenkomen in één project.
 
 ## bronnen: 
+**TMDB api**
+https://developer.themoviedb.org/docs/getting-started
+
 **devine:vars:** Variabel van ss (server side) naar cs (client side) doorgeven.
 https://docs.astro.build/en/reference/directives-reference/#definevars
 
@@ -374,6 +377,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 **View-transitions**
 https://docs.astro.build/en/guides/view-transitions/
+
+**web annimation api**
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API
 
 **scrollLeft**
 https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft
