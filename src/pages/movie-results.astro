@@ -134,19 +134,33 @@ const customTransition = {
 	const carousel = document.querySelector(".cast-carousel")
 	const cards = document.querySelectorAll(".cast-card")
 
+	// offsetWidth
+	// https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth
+
+	// scrollLeft
+	// https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft
 	function updateCarousel() {
     const carouselCenter = carousel.scrollLeft + carousel.offsetWidth / 2
 
+	// math.abs
+	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/abs
+
+	// offsetLeft
+	// https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetLeft
     cards.forEach(function (card) {
       const cardCenter = card.offsetLeft + card.offsetWidth / 2
       const distance = Math.abs(carouselCenter - cardCenter)
 
+	// math.min
+	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min
       const maxDistance = carousel.offsetWidth / 2
       const progress = Math.min(distance / maxDistance, 1)
 
       const scale = 1 - progress * 0.25
       const z = -progress * 180
 
+	// **web annimation api**
+	// https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API
       card.animate(
         {
           transform: `scale(${scale}) translateZ(${z}px)`
@@ -162,6 +176,7 @@ const customTransition = {
 
   carousel.addEventListener("scroll", updateCarousel)
   window.addEventListener("load", updateCarousel)
+  
 	
 </script>
 

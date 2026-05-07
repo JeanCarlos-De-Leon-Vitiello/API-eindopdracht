@@ -357,6 +357,9 @@ Een belangrijk leerpunt was dat kleine technische keuzes veel invloed kunnen heb
 Als ik verder zou werken aan dit project, zou ik de interacties nog meer verfijnen. Ik zou bijvoorbeeld de carousel stabieler maken op verschillende schermgroottes, de biografie op de detailpagina inklapbaar maken met een “Lees meer”-knop en misschien alsnog experimenteren met spraakinput of AI om een mood automatisch te herkennen. Over het algemeen ben ik tevreden met wat ik heb gebouwd, omdat ik meerdere API’s heb gecombineerd en beter ben gaan begrijpen hoe client-side interactie, server-side data en animatie samenkomen in één project.
 
 ## bronnen: 
+**window.location.href**
+https://stackoverflow.com/questions/7077770/window-location-href-and-window-open-methods-in-javascript
+
 **TMDB api**
 https://developer.themoviedb.org/docs/getting-started
 

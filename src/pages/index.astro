@@ -33,7 +33,7 @@ import MainLayout from "../layouts/MainLayout.astro"
 				const mood = button.getAttribute("data-mood")
 				
 				// uitkomst van de genreId doorgeven als params in de url
-				// bron: 
+				// bron: https://stackoverflow.com/questions/7077770/window-location-href-and-window-open-methods-in-javascript
 				if (mood) {
 					window.location.href = "/movie-results?mood=" + mood;
 				}
